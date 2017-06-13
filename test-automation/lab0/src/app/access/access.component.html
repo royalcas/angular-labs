@@ -1,0 +1,24 @@
+<md-card>
+    
+    <md-card-title>Access</md-card-title>
+
+    <md-hint class="error" [ngStyle]="{'color': 'red'}" *ngIf="error" [@fallIn]='state'>{{ error }}</md-hint>
+
+    <form #formData='ngForm' (ngSubmit)="saveAccess(formData)">
+      <md-input-container  >
+        <input mdInput placeholder="Plate" maxlength="6" [(ngModel)]="vehiclePlate"  name="plate"   required>
+        
+      </md-input-container>
+       <md-input-container>
+          <input mdInput [mdDatepicker]="picker" [(ngModel)]="accessDate" name="access-date" placeholder="AccessDate" required>
+          <button mdSuffix [mdDatepickerToggle]="picker"></button>
+      </md-input-container>
+      <md-datepicker #picker></md-datepicker>
+        <md-input-container  >
+        <input mdInput #hour placeholder="Hour" [(ngModel)]="hours"  name="hour" type="number"   required>
+
+      </md-input-container>
+      <button md-raised-button color="primary" type="submit" [disabled]="!formData.valid" class="basic-btn">Save</button>
+
+  </form>
+</md-card>

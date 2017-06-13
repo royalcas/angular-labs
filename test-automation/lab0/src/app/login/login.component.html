@@ -1,0 +1,19 @@
+<md-card>
+    
+    <md-card-title>Login</md-card-title>
+
+    <md-hint class="error" [ngStyle]="{'color': 'red'}" *ngIf="error" [@fallIn]='state'>{{ error }}</md-hint>
+
+    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+      <md-input-container inputmode="email" autocomplete="email" >
+        <input mdInput #email placeholder="Email" (ngModel)="email"  name="email" type="email"  required>
+        <md-hint *ngIf="email.errors" [ngStyle]="{'color': 'red'}" align="start">Email is required</md-hint>
+      </md-input-container>
+      <md-input-container inputmode="password">
+        <input mdInput placeholder="Password" (ngModel)="password" name="password" type="password" required>
+        <md-error>This field is required</md-error>
+      </md-input-container>
+      <button md-raised-button color="primary" type="submit" [disabled]="!formData.valid" class="basic-btn">Log in</button>
+
+  </form>
+</md-card>

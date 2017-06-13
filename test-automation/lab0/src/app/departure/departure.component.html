@@ -1,0 +1,21 @@
+<md-card>
+    
+    <md-card-title>Access</md-card-title>
+
+    <md-hint class="error" [ngStyle]="{'color': 'red'}" *ngIf="error" [@fallIn]='state'>{{ error }}</md-hint>
+
+    <form #formData='ngForm' (ngSubmit)="calculatePrice(formData)">
+      <md-input-container  >
+        <input mdInput placeholder="Plate" maxlength="6" [(ngModel)]="vehiclePlate"  name="plate"   required>
+        
+      </md-input-container>
+        <md-input-container  >
+        <input mdInput #hour placeholder="Hours" [(ngModel)]="hours"  name="hour" type="number"   required>
+      </md-input-container>
+      <button md-raised-button color="primary" type="submit" [disabled]="!formData.valid" class="basic-btn">Calculate</button>
+
+  </form>
+</md-card>
+<md-card  *ngIf="price">
+    <h1>{{price}}</h1>
+</md-card>
